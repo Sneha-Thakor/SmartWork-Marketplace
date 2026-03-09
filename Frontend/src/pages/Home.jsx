@@ -1,42 +1,37 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-
 function Home() {
   return (
-    <div>
-      <Navbar />
+    <div style={{padding:"60px"}}>
 
-      <div className="hero">
-        <h1>Global Service Marketplace</h1>
-        <p>
-          A global platform where clients post projects and developers
-          collaborate to deliver technology solutions.
-        </p>
+      <h1>Global Service Marketplace</h1>
 
-        <div className="hero-buttons">
-          <button>Post a Project</button>
-          <button>Join as Developer</button>
-        </div>
+      <p style={{maxWidth:"600px"}}>
+      Connect with top developers worldwide and build amazing technology
+      products faster.
+      </p>
+
+      <div style={{marginTop:"20px"}}>
+
+        <button style={{
+          padding:"12px 20px",
+          marginRight:"10px",
+          background:"#2563eb",
+          color:"white",
+          border:"none"
+        }}>
+          Post a Project
+        </button>
+
+        <button style={{
+          padding:"12px 20px",
+          background:"#16a34a",
+          color:"white",
+          border:"none"
+        }}>
+          Join as Developer
+        </button>
+
       </div>
 
-      <div className="features">
-        <h2>Platform Features</h2>
-
-        <div className="feature-box">
-          <h3>Project Marketplace</h3>
-          <p>Browse global technology projects and apply instantly.</p>
-        </div>
-
-        <div className="feature-box">
-          <h3>Smart Matching</h3>
-          <p>Our engine recommends the best developers for each project.</p>
-        </div>
-
-        <div className="feature-box">
-          <h3>Analytics Dashboard</h3>
-          <p>Admins can monitor demand, skills, and performance metrics.</p>
-        </div>
-      </div>
     </div>
   );
 }

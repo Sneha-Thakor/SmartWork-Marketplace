@@ -1,24 +1,49 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-import ProjectCard from "../components/ProjectCard";
-import FilterPanel from "../components/FilterPanel";
-import projects from "../data/projects";
-
 function Marketplace() {
+
+  const projects = [
+    {
+      title: "React Website Development",
+      budget: "$1000",
+      skills: "React, Node.js"
+    },
+    {
+      title: "Mobile App Development",
+      budget: "$2000",
+      skills: "Flutter, Firebase"
+    },
+    {
+      title: "Ecommerce Website",
+      budget: "$1500",
+      skills: "MERN Stack"
+    }
+  ];
+
   return (
-    <div>
-      <Navbar />
+
+    <div className="marketplace">
 
       <h1>Project Marketplace</h1>
 
-      <FilterPanel />
+      <div className="projects">
 
-      <div className="project-grid">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {projects.map((project,index)=>(
+          <div className="project-card" key={index}>
+
+            <h3>{project.title}</h3>
+
+            <p>Budget: {project.budget}</p>
+
+            <p>Skills: {project.skills}</p>
+
+            <button>View Details</button>
+
+          </div>
         ))}
+
       </div>
+
     </div>
+
   );
 }
 
