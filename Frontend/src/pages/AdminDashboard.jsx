@@ -1,5 +1,6 @@
-import projects from "../data/projects";
-import developers from "../data/developers";
+import { Link } from "react-router-dom"
+import projects from "../data/projects"
+import developers from "../data/developers"
 
 import {
 Chart as ChartJS,
@@ -12,9 +13,9 @@ ArcElement,
 Title,
 Tooltip,
 Legend
-} from "chart.js";
+} from "chart.js"
 
-import { Bar, Pie, Line } from "react-chartjs-2";
+import { Bar, Pie, Line } from "react-chartjs-2"
 
 ChartJS.register(
 CategoryScale,
@@ -26,16 +27,19 @@ ArcElement,
 Title,
 Tooltip,
 Legend
-);
+)
 
 function AdminDashboard(){
 
-const totalProjects = projects.length;
-const activeProjects = projects.filter(p => p.status === "active").length || 12;
-const activeDevelopers = developers.length;
+const totalProjects = projects.length
+const activeProjects = projects.filter(p=>p.status==="active").length || 12
+const activeDevelopers = developers.length
 
 const avgRating =
-developers.reduce((a,d)=>a+(d.rating||4),0)/developers.length;
+developers.reduce((a,d)=>a+(d.rating||4),0)/developers.length
+
+
+/* Charts Data */
 
 const countryData = {
 labels:["USA","UK","India"],
@@ -46,7 +50,7 @@ data:[5,3,4],
 backgroundColor:"#3b82f6"
 }
 ]
-};
+}
 
 const projectSkillData = {
 labels:["React","Node","Python"],
@@ -57,7 +61,7 @@ data:[6,5,3],
 backgroundColor:"#10b981"
 }
 ]
-};
+}
 
 const developerSkillData = {
 labels:["Frontend","Backend","Fullstack"],
@@ -68,7 +72,7 @@ data:[4,3,5],
 backgroundColor:"#f59e0b"
 }
 ]
-};
+}
 
 const categoryData = {
 labels:["Web Development","AI","FinTech"],
@@ -78,7 +82,7 @@ data:[8,3,3],
 backgroundColor:["#2563eb","#10b981","#f59e0b"]
 }
 ]
-};
+}
 
 const budgetData = {
 labels:["$0-500","$500-1500","$1500+"],
@@ -88,7 +92,7 @@ data:[4,6,4],
 backgroundColor:["#6366f1","#14b8a6","#f97316"]
 }
 ]
-};
+}
 
 const trendData = {
 labels:["Jan","Feb","Mar","Apr","May","Jun"],
@@ -101,14 +105,30 @@ backgroundColor:"#93c5fd",
 tension:0.4
 }
 ]
-};
-
+}
 
 return(
 
 <div className="dashboard">
 
 <h1>Admin Analytics Dashboard</h1>
+
+{/* Navigation Buttons */}
+
+<div style={{marginBottom:"30px"}}>
+
+<Link to="/admin/users">
+<button>View Users</button>
+</Link>
+
+<Link to="/admin/projects">
+<button style={{marginLeft:"10px"}}>View Projects</button>
+</Link>
+
+</div>
+
+
+{/* KPI */}
 
 <div className="grid">
 
@@ -134,8 +154,8 @@ return(
 
 </div>
 
-<h2 style={{marginTop:"50px"}}>Platform Analytics</h2>
 
+<h2 style={{marginTop:"40px"}}>Platform Analytics</h2>
 
 <div className="analytics-grid">
 
@@ -177,4 +197,4 @@ return(
 
 }
 
-export default AdminDashboard;
+export default AdminDashboard
