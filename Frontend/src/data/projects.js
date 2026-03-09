@@ -1,22 +1,41 @@
 const projects = [
-  {
-    id: 1,
-    title: "Build React Dashboard",
-    description: "Need a developer to build analytics dashboard.",
-    skills: ["React", "Chart.js"],
-    budget: 1500,
-    country: "USA",
-    urgency: "High"
-  },
-  {
-    id: 2,
-    title: "Node API Development",
-    description: "Develop REST APIs for fintech platform.",
-    skills: ["Node.js", "MongoDB"],
-    budget: 2000,
-    country: "UK",
-    urgency: "Medium"
-  }
-];
 
-export default projects;
+{
+id:1,
+title:"React Website Development",
+skills:"React, Node.js",
+budget:"$1000",
+country:"USA",
+urgency:"High",
+date:"2 days ago",
+description:"Build a responsive React website with API integration.",
+category:"Web Development"
+},
+
+{
+id:2,
+title:"Mobile App Development",
+skills:"Flutter, Firebase",
+budget:"$2000",
+country:"India",
+urgency:"Medium",
+date:"5 days ago",
+description:"Create a cross platform mobile app with Firebase backend.",
+category:"Mobile App"
+},
+
+{
+id:3,
+title:"Ecommerce Platform",
+skills:"MERN Stack",
+budget:"$1500",
+country:"UK",
+urgency:"Low",
+date:"1 day ago",
+description:"Develop a complete ecommerce marketplace system.",
+category:"Ecommerce"
+}
+
+]
+
+export default projects

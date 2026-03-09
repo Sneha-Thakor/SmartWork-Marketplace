@@ -1,47 +1,18 @@
-import { useState } from "react";
+import { useState } from "react"
+import { Link } from "react-router-dom"
+import projects from "../data/projects"
 
-function Marketplace() {
+function Marketplace(){
 
-const [filterCountry,setFilterCountry] = useState("");
-const [filterSkill,setFilterSkill] = useState("");
+const [country,setCountry] = useState("")
+const [skill,setSkill] = useState("")
 
-const projects = [
-{
-title:"React Website Development",
-skills:"React, Node.js",
-budget:"$1000",
-country:"USA",
-urgency:"High",
-date:"2 days ago"
-},
+const filtered = projects.filter(p =>
 
-{
-title:"Mobile App Development",
-skills:"Flutter, Firebase",
-budget:"$2000",
-country:"India",
-urgency:"Medium",
-date:"5 days ago"
-},
+(country === "" || p.country === country) &&
+(skill === "" || p.skills.toLowerCase().includes(skill.toLowerCase()))
 
-{
-title:"Ecommerce Website",
-skills:"MERN Stack",
-budget:"$1500",
-country:"UK",
-urgency:"Low",
-date:"1 day ago"
-}
-];
-
-const filteredProjects = projects.filter((p)=>{
-
-return(
-(filterCountry === "" || p.country === filterCountry) &&
-(filterSkill === "" || p.skills.toLowerCase().includes(filterSkill.toLowerCase()))
 )
-
-});
 
 return(
 
@@ -49,55 +20,39 @@ return(
 
 <h1>Project Marketplace</h1>
 
-{/* Filters */}
-
 <div className="filters">
 
-<select onChange={(e)=>setFilterCountry(e.target.value)}>
-
+<select onChange={(e)=>setCountry(e.target.value)}>
 <option value="">All Countries</option>
-<option value="USA">USA</option>
-<option value="India">India</option>
-<option value="UK">UK</option>
-
+<option>USA</option>
+<option>India</option>
+<option>UK</option>
 </select>
 
 <input
-type="text"
-placeholder="Search Skill (React, MERN...)"
-onChange={(e)=>setFilterSkill(e.target.value)}
+placeholder="Search Skills"
+onChange={(e)=>setSkill(e.target.value)}
 />
 
 </div>
 
-
-{/* Project Cards */}
-
 <div className="projects">
 
-{filteredProjects.map((project,index)=>(
+{filtered.map(p => (
 
-<div className="project-card" key={index}>
+<div className="project-card" key={p.id}>
 
-<h3>{project.title}</h3>
+<h3>{p.title}</h3>
 
-<p><b>Skills:</b> {project.skills}</p>
+<p><b>Skills:</b> {p.skills}</p>
+<p><b>Budget:</b> {p.budget}</p>
+<p><b>Country:</b> {p.country}</p>
+<p><b>Urgency:</b> {p.urgency}</p>
+<p><b>Posted:</b> {p.date}</p>
 
-<p><b>Budget:</b> {project.budget}</p>
-
-<p><b>Country:</b> {project.country}</p>
-
-<p><b>Urgency:</b> {project.urgency}</p>
-
-<p><b>Posted:</b> {project.date}</p>
-
-<div className="buttons">
-
-<button className="details">View Details</button>
-
-<button className="apply">Apply</button>
-
-</div>
+<Link to={`/project/${p.id}`}>
+<button>View Details</button>
+</Link>
 
 </div>
 
@@ -111,4 +66,4 @@ onChange={(e)=>setFilterSkill(e.target.value)}
 
 }
 
-export default Marketplace;
+export default Marketplace

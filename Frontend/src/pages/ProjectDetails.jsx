@@ -1,36 +1,35 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import projects from "../data/projects";
-import Navbar from "../components/Navbar";
+import { useParams, Link } from "react-router-dom"
+import projects from "../data/projects"
 
-function ProjectDetails() {
-  const { id } = useParams();
+function ProjectDetails(){
 
-  const project = projects.find((p) => p.id === parseInt(id));
+const { id } = useParams()
 
-  if (!project) {
-    return <h2>Project not found</h2>;
-  }
+const project = projects.find(p => p.id == id)
 
-  return (
-    <div>
-      <Navbar />
+return(
 
-      <h1>{project.title}</h1>
+<div className="container">
 
-      <p>{project.description}</p>
+<h1>{project.title}</h1>
 
-      <p><b>Skills:</b> {project.skills.join(", ")}</p>
+<p><b>Description:</b> {project.description}</p>
+<p><b>Skills:</b> {project.skills}</p>
+<p><b>Budget:</b> {project.budget}</p>
+<p><b>Country:</b> {project.country}</p>
+<p><b>Urgency:</b> {project.urgency}</p>
 
-      <p><b>Budget:</b> ${project.budget}</p>
+<p><b>Client Rating:</b> ⭐ 4.5</p>
+<p><b>Matching Score:</b> 82%</p>
 
-      <p><b>Country:</b> {project.country}</p>
+<Link to={`/apply/${project.id}`}>
+<button>Apply to Project</button>
+</Link>
 
-      <p><b>Urgency:</b> {project.urgency}</p>
+</div>
 
-      <button>Apply for Project</button>
-    </div>
-  );
+)
+
 }
 
-export default ProjectDetails;
+export default ProjectDetails
