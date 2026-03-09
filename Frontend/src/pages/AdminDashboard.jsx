@@ -1,96 +1,180 @@
 import projects from "../data/projects";
 import developers from "../data/developers";
 
-function AdminDashboard() {
+import {
+Chart as ChartJS,
+CategoryScale,
+LinearScale,
+PointElement,
+LineElement,
+BarElement,
+ArcElement,
+Title,
+Tooltip,
+Legend
+} from "chart.js";
 
-  const totalProjects = projects.length;
-  const totalDevelopers = developers.length;
+import { Bar, Pie, Line } from "react-chartjs-2";
 
-  const activeProjects = projects.filter(p => p.status === "active").length || 12;
+ChartJS.register(
+CategoryScale,
+LinearScale,
+PointElement,
+LineElement,
+BarElement,
+ArcElement,
+Title,
+Tooltip,
+Legend
+);
 
-  const avgRating =
-    developers.reduce((acc, dev) => acc + (dev.rating || 4), 0) /
-    developers.length;
+function AdminDashboard(){
 
-  return (
-    <div style={{ padding: "40px" }}>
+const totalProjects = projects.length;
+const activeProjects = projects.filter(p => p.status === "active").length || 12;
+const activeDevelopers = developers.length;
 
-      <h1>Admin Analytics Dashboard</h1>
+const avgRating =
+developers.reduce((a,d)=>a+(d.rating||4),0)/developers.length;
 
-      {/* KPI SECTION */}
+const countryData = {
+labels:["USA","UK","India"],
+datasets:[
+{
+label:"Projects",
+data:[5,3,4],
+backgroundColor:"#3b82f6"
+}
+]
+};
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4,1fr)",
-          gap: "20px",
-          marginTop: "30px"
-        }}
-      >
+const projectSkillData = {
+labels:["React","Node","Python"],
+datasets:[
+{
+label:"Projects",
+data:[6,5,3],
+backgroundColor:"#10b981"
+}
+]
+};
 
-        <div className="card">
-          <h3>Total Projects</h3>
-          <p>{totalProjects}</p>
-        </div>
+const developerSkillData = {
+labels:["Frontend","Backend","Fullstack"],
+datasets:[
+{
+label:"Developers",
+data:[4,3,5],
+backgroundColor:"#f59e0b"
+}
+]
+};
 
-        <div className="card">
-          <h3>Active Projects</h3>
-          <p>{activeProjects}</p>
-        </div>
+const categoryData = {
+labels:["Web Development","AI","FinTech"],
+datasets:[
+{
+data:[8,3,3],
+backgroundColor:["#2563eb","#10b981","#f59e0b"]
+}
+]
+};
 
-        <div className="card">
-          <h3>Active Developers</h3>
-          <p>{totalDevelopers}</p>
-        </div>
+const budgetData = {
+labels:["$0-500","$500-1500","$1500+"],
+datasets:[
+{
+data:[4,6,4],
+backgroundColor:["#6366f1","#14b8a6","#f97316"]
+}
+]
+};
 
-        <div className="card">
-          <h3>Avg Client Rating</h3>
-          <p>{avgRating.toFixed(1)}</p>
-        </div>
+const trendData = {
+labels:["Jan","Feb","Mar","Apr","May","Jun"],
+datasets:[
+{
+label:"Projects Posted",
+data:[2,3,5,4,6,7],
+borderColor:"#2563eb",
+backgroundColor:"#93c5fd",
+tension:0.4
+}
+]
+};
 
-      </div>
 
-      {/* ANALYTICS SECTION */}
+return(
 
-      <div style={{ marginTop: "50px" }}>
+<div className="dashboard">
 
-        <h2>Platform Analytics</h2>
+<h1>Admin Analytics Dashboard</h1>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2,1fr)",
-            gap: "30px",
-            marginTop: "20px"
-          }}
-        >
+<div className="grid">
 
-          <div className="card">
-            <h3>Projects by Country</h3>
-            <p>USA, UK, India (sample data)</p>
-          </div>
+<div className="card">
+<h3>Total Projects</h3>
+<p>{totalProjects}</p>
+</div>
 
-          <div className="card">
-            <h3>Top Skills in Demand</h3>
-            <p>React, Node.js, Python</p>
-          </div>
+<div className="card">
+<h3>Active Projects</h3>
+<p>{activeProjects}</p>
+</div>
 
-          <div className="card">
-            <h3>Developers by Skill</h3>
-            <p>Frontend, Backend, Fullstack</p>
-          </div>
+<div className="card">
+<h3>Active Developers</h3>
+<p>{activeDevelopers}</p>
+</div>
 
-          <div className="card">
-            <h3>Project Categories</h3>
-            <p>Web Development, AI, FinTech</p>
-          </div>
+<div className="card">
+<h3>Average Client Rating</h3>
+<p>{avgRating.toFixed(1)}</p>
+</div>
 
-        </div>
+</div>
 
-      </div>
+<h2 style={{marginTop:"50px"}}>Platform Analytics</h2>
 
-    </div>
-  );
+
+<div className="analytics-grid">
+
+<div className="card">
+<h3>Projects by Country</h3>
+<Bar data={countryData}/>
+</div>
+
+<div className="card">
+<h3>Projects by Skill</h3>
+<Bar data={projectSkillData}/>
+</div>
+
+<div className="card">
+<h3>Developers by Skill</h3>
+<Bar data={developerSkillData}/>
+</div>
+
+<div className="card">
+<h3>Project Categories</h3>
+<Pie data={categoryData}/>
+</div>
+
+<div className="card">
+<h3>Budget Distribution</h3>
+<Pie data={budgetData}/>
+</div>
+
+<div className="card">
+<h3>Project Trends</h3>
+<Line data={trendData}/>
+</div>
+
+</div>
+
+</div>
+
+)
+
 }
 
 export default AdminDashboard;
