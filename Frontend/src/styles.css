@@ -435,3 +435,76 @@ font-size:14px;
 .admin-table tr:hover{
 background:#f3f4f6;
 }
+
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f6fb;
+}
+
+.sidebar{
+width:220px;
+height:100vh;
+background:#0f172a;
+color:white;
+position:fixed;
+padding:20px;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar li{
+margin:15px 0;
+}
+
+.sidebar a{
+color:white;
+text-decoration:none;
+}
+
+.main{
+margin-left:240px;
+padding:40px;
+}
+
+.cards{
+display:flex;
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+form{
+display:flex;
+flex-direction:column;
+max-width:400px;
+}
+
+input,textarea,select{
+margin:10px 0;
+padding:10px;
+}
+
+button{
+padding:10px;
+background:#2563eb;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.project{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:8px;
+}

@@ -1,31 +1,37 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar"
 
-import Home from "./pages/Home";
-import Marketplace from "./pages/Marketplace";
-import ProjectDetails from "./pages/ProjectDetails";
-import DeveloperProfile from "./pages/DeveloperProfile";
-import AdminDashboard from "./pages/AdminDashboard";
+/* MAIN PAGES */
 
-import ApplyProject from "./pages/ApplyProject";
-import ApplicationStatus from "./pages/ApplicationStatus";
+import Home from "./pages/Home"
+import Marketplace from "./pages/Marketplace"
+import ProjectDetails from "./pages/ProjectDetails"
+import DeveloperProfile from "./pages/DeveloperProfile"
+import AdminDashboard from "./pages/AdminDashboard"
 
-import AdminUsers from "./pages/AdminUsers";
-import AdminProjects from "./pages/AdminProjects";
+/* NEW PAGES */    
+
+import ApplyProject from "./pages/ApplyProject"
+import ApplicationStatus from "./pages/ApplicationStatus"
+
+/* DEVELOPER AREA */
+
+import DeveloperRegister from "./pages/DeveloperRegister"
+import DeveloperLogin from "./pages/DeveloperLogin"
+import DeveloperDashboard from "./pages/DeveloperDashboard"
+import MyApplications from "./pages/MyApplications"
+import EditDeveloperProfile from "./pages/EditDeveloperProfile"
 
 function App() {
 
   return (
-    <BrowserRouter>
 
-      {/* Navbar always visible */}
+    <BrowserRouter>
 
       <Navbar />
 
       <Routes>
-
-        {/* Public Pages */}
 
         <Route path="/" element={<Home />} />
 
@@ -37,21 +43,26 @@ function App() {
 
         <Route path="/developer/:id" element={<DeveloperProfile />} />
 
+        <Route path="/developer/edit" element={<EditDeveloperProfile />} />
+
         <Route path="/applications" element={<ApplicationStatus />} />
 
-        {/* Admin Section */}
+        <Route path="/my-applications" element={<MyApplications />} />
+
+        <Route path="/developer-register" element={<DeveloperRegister />} />
+
+        <Route path="/developer-login" element={<DeveloperLogin />} />
+
+        <Route path="/developer-dashboard" element={<DeveloperDashboard />} />
 
         <Route path="/admin" element={<AdminDashboard />} />
-
-        <Route path="/admin/users" element={<AdminUsers />} />
-
-        <Route path="/admin/projects" element={<AdminProjects />} />
 
       </Routes>
 
     </BrowserRouter>
-  );
+
+  )
 
 }
 
-export default App;
+export default App    
