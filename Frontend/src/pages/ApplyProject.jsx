@@ -9,7 +9,10 @@ function handleSubmit(e){
 
 e.preventDefault()
 
-alert("Application Submitted")
+alert("Application Submitted Successfully!")
+
+setProposal("")
+setDays("")
 
 }
 
@@ -19,22 +22,28 @@ return(
 
 <h1>Apply to Project</h1>
 
+<div className="apply-form">
+
 <form onSubmit={handleSubmit}>
 
 <textarea
-placeholder="Write your proposal"
+placeholder="Write your proposal..."
+value={proposal}
 onChange={(e)=>setProposal(e.target.value)}
 />
 
 <input
 type="number"
 placeholder="Expected Delivery Days"
+value={days}
 onChange={(e)=>setDays(e.target.value)}
 />
 
 <button type="submit">Submit Application</button>
 
 </form>
+
+</div>
 
 </div>
 
