@@ -14,7 +14,7 @@ return(
 
 <tr>
 <th>Name</th>
-<th>Primary Skill</th>
+<th>Skill</th>
 <th>Experience</th>
 <th>Rating</th>
 </tr>

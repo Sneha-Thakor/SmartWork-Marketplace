@@ -18,10 +18,6 @@ Spartan Tech Marketplace
 
 <Link to="/admin">Admin Dashboard</Link>
 
-<Link to="/admin/users">Users</Link>
-
-<Link to="/admin/projects">Projects</Link>
-
 </div>
 
 </div>
