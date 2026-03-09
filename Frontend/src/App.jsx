@@ -3,25 +3,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 
 /* MAIN PAGES */
-
 import Home from "./pages/Home"
 import Marketplace from "./pages/Marketplace"
 import ProjectDetails from "./pages/ProjectDetails"
-import DeveloperProfile from "./pages/DeveloperProfile"
 import AdminDashboard from "./pages/AdminDashboard"
 
 /* NEW PAGES */    
-
 import ApplyProject from "./pages/ApplyProject"
 import ApplicationStatus from "./pages/ApplicationStatus"
-
-/* DEVELOPER AREA */
-
 import DeveloperRegister from "./pages/DeveloperRegister"
-import DeveloperLogin from "./pages/DeveloperLogin"
-import DeveloperDashboard from "./pages/DeveloperDashboard"
-import MyApplications from "./pages/MyApplications"
-import EditDeveloperProfile from "./pages/EditDeveloperProfile"
+import PostProject from "./pages/PostProject"   // ⭐ NEW PAGE
 
 function App() {
 
@@ -41,21 +32,15 @@ function App() {
 
         <Route path="/apply/:id" element={<ApplyProject />} />
 
-        <Route path="/developer/:id" element={<DeveloperProfile />} />
+        <Route path="/admin" element={<AdminDashboard />} />
 
-        <Route path="/developer/edit" element={<EditDeveloperProfile />} />
+        <Route path="/application-status" element={<ApplicationStatus />} />
 
-        <Route path="/applications" element={<ApplicationStatus />} />
-
-        <Route path="/my-applications" element={<MyApplications />} />
-
+        {/* Developer Register */}
         <Route path="/developer-register" element={<DeveloperRegister />} />
 
-        <Route path="/developer-login" element={<DeveloperLogin />} />
-
-        <Route path="/developer-dashboard" element={<DeveloperDashboard />} />
-
-        <Route path="/admin" element={<AdminDashboard />} />
+        {/* ⭐ Post Project Page */}
+        <Route path="/post-project" element={<PostProject />} />
 
       </Routes>
 
@@ -65,4 +50,4 @@ function App() {
 
 }
 
-export default App    
+export default App

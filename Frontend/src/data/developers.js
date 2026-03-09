@@ -1,19 +1,21 @@
 const developers = [
   {
     id: 1,
-    name: "John Doe",
-    skill: "React",
-    experience: 5,
-    rating: 4.7,
-    country: "USA"
+    name: "Rahul Sharma",
+    skills: ["React", "Node.js"],
+    rating: 4.5
   },
   {
     id: 2,
-    name: "Amit Sharma",
-    skill: "Node.js",
-    experience: 4,
-    rating: 4.5,
-    country: "India"
+    name: "Ankit Verma",
+    skills: ["Python", "Django"],
+    rating: 4.2
+  },
+  {
+    id: 3,
+    name: "Priya Patel",
+    skills: ["UI/UX", "Figma"],
+    rating: 4.8
   }
 ];
 

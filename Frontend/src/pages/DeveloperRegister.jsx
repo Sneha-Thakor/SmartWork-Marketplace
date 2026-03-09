@@ -1,24 +1,41 @@
 import React from "react";
 
-const DeveloperRegister = () => {
+function DeveloperRegister() {
+
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Developer Register</h1>
 
-      <form>
-        <input type="text" placeholder="Full Name" />
-        <br /><br />
+    <div className="register-container">
 
-        <input type="email" placeholder="Email" />
-        <br /><br />
+      <h1>Join as Developer</h1>
+      <p>Create your developer profile and start applying to global projects.</p>
 
-        <input type="password" placeholder="Password" />
-        <br /><br />
+      <form className="register-form">
 
-        <button type="submit">Register</button>
+        <input type="text" placeholder="Full Name" required />
+
+        <input type="email" placeholder="Email Address" required />
+
+        <input type="password" placeholder="Password" required />
+
+        <input type="text" placeholder="Country / Location" />
+
+        <input type="text" placeholder="Primary Skill (React, Python etc)" />
+
+        <input type="text" placeholder="Secondary Skills" />
+
+        <input type="number" placeholder="Experience (Years)" />
+
+        <textarea placeholder="Short Bio"></textarea>
+
+        <input type="text" placeholder="Portfolio Link (Optional)" />
+
+        <button type="submit">Create Developer Profile</button>
+
       </form>
+
     </div>
+
   );
-};
+}
 
 export default DeveloperRegister;
