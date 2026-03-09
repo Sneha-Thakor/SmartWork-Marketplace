@@ -16,42 +16,75 @@ const filtered = projects.filter(p =>
 
 return(
 
-<div className="marketplace">
+<div className="marketplace-container">
 
-<h1>Project Marketplace</h1>
+<h1 className="marketplace-title">Project Marketplace</h1>
 
-<div className="filters">
+{/* FILTER BAR */}
 
-<select onChange={(e)=>setCountry(e.target.value)}>
+<div className="filter-bar">
+
+<select
+value={country}
+onChange={(e)=>setCountry(e.target.value)}
+>
+
 <option value="">All Countries</option>
-<option>USA</option>
-<option>India</option>
-<option>UK</option>
+<option value="USA">USA</option>
+<option value="India">India</option>
+<option value="UK">UK</option>
+
 </select>
 
 <input
-placeholder="Search Skills"
+type="text"
+placeholder="Search Skills (React, AI, Python...)"
+value={skill}
 onChange={(e)=>setSkill(e.target.value)}
 />
 
 </div>
 
-<div className="projects">
+{/* PROJECT GRID */}
+
+<div className="project-grid">
 
 {filtered.map(p => (
 
 <div className="project-card" key={p.id}>
 
-<h3>{p.title}</h3>
+<h3 className="project-title">{p.title}</h3>
 
-<p><b>Skills:</b> {p.skills}</p>
-<p><b>Budget:</b> {p.budget}</p>
-<p><b>Country:</b> {p.country}</p>
-<p><b>Urgency:</b> {p.urgency}</p>
-<p><b>Posted:</b> {p.date}</p>
+<p className="project-info">
+<b>Skills:</b> {p.skills}
+</p>
+
+<p className="project-info">
+<b>Budget:</b> {p.budget}
+</p>
+
+<p className="project-info">
+<b>Country:</b> {p.country}
+</p>
+
+<p className="project-info">
+<b>Urgency:</b> {p.urgency}
+</p>
+
+<p className="project-info">
+<b>Posted:</b> {p.date}
+</p>
+
+{/* Example Smart Matching Score */}
+
+<p className="matching-score">
+Match Score: {Math.floor(Math.random()*40)+60}%
+</p>
 
 <Link to={`/project/${p.id}`}>
-<button>View Details</button>
+<button className="view-btn">
+View Details
+</button>
 </Link>
 
 </div>
