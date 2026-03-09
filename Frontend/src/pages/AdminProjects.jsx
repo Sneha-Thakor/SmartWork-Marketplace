@@ -29,7 +29,7 @@ return(
 
 <td>{p.title}</td>
 
-<td>{Array.isArray(p.skills) ? p.skills.join(", ") : p.skills}</td>
+<td>{p.skills.join(", ")}</td>
 
 <td>${p.budget}</td>
 

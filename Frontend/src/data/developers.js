@@ -1,22 +1,26 @@
 const developers = [
-  {
-    id: 1,
-    name: "Rahul Sharma",
-    skills: ["React", "Node.js"],
-    rating: 4.5
-  },
-  {
-    id: 2,
-    name: "Ankit Verma",
-    skills: ["Python", "Django"],
-    rating: 4.2
-  },
-  {
-    id: 3,
-    name: "Priya Patel",
-    skills: ["UI/UX", "Figma"],
-    rating: 4.8
-  }
-];
 
-export default developers;
+{
+name:"Rahul Sharma",
+skill:"React",
+experience:5,
+rating:4.5
+},
+
+{
+name:"Ankit Verma",
+skill:"Node.js",
+experience:4,
+rating:4.2
+},
+
+{
+name:"Priya Patel",
+skill:"Python",
+experience:6,
+rating:4.8
+}
+
+]
+
+export default developers

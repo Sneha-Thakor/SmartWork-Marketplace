@@ -1,22 +1,26 @@
 const projects = [
-  {
-    id: 1,
-    title: "E-commerce Website",
-    budget: "$1000",
-    status: "Open"
-  },
-  {
-    id: 2,
-    title: "Mobile App Development",
-    budget: "$2000",
-    status: "In Progress"
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    budget: "$500",
-    status: "Completed"
-  }
-];
 
-export default projects;
+{
+title:"E-commerce Website",
+skills:["React","Node"],
+budget:1000,
+country:"India"
+},
+
+{
+title:"Mobile App Development",
+skills:["Flutter","Firebase"],
+budget:2000,
+country:"USA"
+},
+
+{
+title:"Portfolio Website",
+skills:["HTML","CSS","JS"],
+budget:500,
+country:"UK"
+}
+
+]
+
+export default projects
