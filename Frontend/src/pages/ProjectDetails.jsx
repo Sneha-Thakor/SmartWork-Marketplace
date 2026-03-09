@@ -30,6 +30,6 @@ return(
 
 )
 
-}
+ }
 
 export default ProjectDetails
