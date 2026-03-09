@@ -1,0 +1,58 @@
+body{
+font-family: Arial;
+margin:0;
+background:#f4f6f9;
+}
+
+.navbar{
+background:#111;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+}
+
+.navbar a{
+color:white;
+margin:10px;
+text-decoration:none;
+}
+
+.container{
+padding:40px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:20px 0;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.filters{
+margin-bottom:20px;
+}
+
+button{
+padding:10px 15px;
+background:#007bff;
+border:none;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.kpi{
+background:white;
+padding:20px;
+text-align:center;
+border-radius:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
