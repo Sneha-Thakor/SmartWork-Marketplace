@@ -61,13 +61,13 @@ return(
 
 <div className="admin-layout">
 
-{/* FORM SIDE */}
+{/* LEFT SIDE - FORM */}
 
 <div className="admin-form-card">
 
 <h2>{editIndex !== null ? "Edit Developer" : "Add Developer"}</h2>
 
-<form onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit} className="admin-form">
 
 <input
 name="name"
@@ -97,7 +97,7 @@ value={form.rating}
 onChange={handleChange}
 />
 
-<button type="submit">
+<button type="submit" className="primary-btn">
 {editIndex !== null ? "Update User" : "Add User"}
 </button>
 
@@ -106,7 +106,7 @@ onChange={handleChange}
 </div>
 
 
-{/* TABLE SIDE */}
+{/* RIGHT SIDE - TABLE */}
 
 <div className="admin-table-card">
 
@@ -124,7 +124,15 @@ onChange={handleChange}
 
 <tbody>
 
-{developers.map((dev,i)=>(
+{developers.length === 0 ? (
+<tr>
+<td colSpan="5" style={{textAlign:"center"}}>
+No Developers Added
+</td>
+</tr>
+) : (
+
+developers.map((dev,i)=>(
 
 <tr key={i}>
 
@@ -156,7 +164,9 @@ Delete
 
 </tr>
 
-))}
+))
+
+)}
 
 </tbody>
 

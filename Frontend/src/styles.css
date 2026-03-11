@@ -573,12 +573,6 @@ border-radius:8px;
 box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
-form{
-display:flex;
-flex-direction:column;
-max-width:400px;
-}
-
 input,textarea,select{
 margin:10px 0;
 padding:10px;
@@ -858,3 +852,109 @@ border-radius:6px;
 color:white;
 cursor:pointer;
  }
+
+.admin-layout{
+display:grid;
+grid-template-columns:350px 1fr;
+gap:40px;
+margin-top:30px;
+align-items:start;
+}
+
+/* LEFT FORM */
+
+.admin-form-card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+width:100%;
+}
+
+.admin-form{
+display:flex;
+flex-direction:column;
+gap:12px;
+width:100%;
+}
+
+.admin-form input{
+padding:12px;
+border-radius:6px;
+border:1px solid #ddd;
+width:100%;
+}
+
+/* RIGHT TABLE */
+
+.admin-table-card{
+background:white;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+overflow:hidden;
+width:100%;
+}
+
+/* TABLE */
+
+.admin-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.admin-table th{
+background:#0f172a;
+color:white;
+padding:15px;
+text-align:left;
+}
+
+.admin-table td{
+padding:14px;
+border-bottom:1px solid #eee;
+}
+
+/* BUTTONS */
+
+.edit-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+margin-right:5px;
+cursor:pointer;
+}
+
+.delete-btn{
+background:#ef4444;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.action-buttons{
+display:flex;
+gap:8px;
+align-items:center;
+}
+
+.edit-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.delete-btn{
+background:#ef4444;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+}
