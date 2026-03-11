@@ -595,3 +595,96 @@ cursor:pointer;
 .submit-btn:hover{
 background:#1d4ed8;
 } 
+
+
+/* PAGE */
+body{
+  font-family: 'Poppins', sans-serif;
+  background:#f4f6fb;
+  margin:0;
+  padding:0;
+}
+
+/* NAVBAR */
+nav{
+  background:#0b1b3f;
+  padding:18px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:500;
+}
+
+nav a:hover{
+  color:#4da3ff;
+}
+
+/* MAIN CONTAINER */
+.project-container{
+  max-width:900px;
+  margin:40px auto;
+  background:white;
+  padding:35px;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.project-title{
+  font-size:32px;
+  font-weight:700;
+  margin-bottom:25px;
+  color:#1a1a1a;
+}
+
+/* INFO GRID */
+.project-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:20px;
+}
+
+.project-info p{
+  background:#f7f9fc;
+  padding:12px;
+  border-radius:6px;
+  margin:0;
+}
+
+/* LINKS */
+.project-links{
+  margin-top:25px;
+}
+
+.project-links a{
+  display:inline-block;
+  margin-right:20px;
+  color:#2563eb;
+  text-decoration:none;
+  font-weight:500;
+}
+
+/* APPLY BUTTON */
+.apply-btn{
+  margin-top:30px;
+  background:#2563eb;
+  color:white;
+  padding:12px 22px;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.apply-btn:hover{
+  background:#1e4ed8;
+}
