@@ -7,12 +7,18 @@ function Marketplace(){
 const [country,setCountry] = useState("")
 const [skill,setSkill] = useState("")
 
-const filtered = projects.filter(p =>
+const filtered = projects.filter(p => {
 
+const skills = Array.isArray(p.skills)
+? p.skills.join(" ").toLowerCase()
+: (p.skills || "").toLowerCase()
+
+return (
 (country === "" || p.country === country) &&
-(skill === "" || p.skills.toLowerCase().includes(skill.toLowerCase()))
-
+(skill === "" || skills.includes(skill.toLowerCase()))
 )
+
+})
 
 return(
 

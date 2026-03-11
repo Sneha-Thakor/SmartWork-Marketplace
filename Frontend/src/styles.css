@@ -696,3 +696,83 @@ nav a:hover{
 .apply-btn:hover{
   background:#1e4ed8;
 }
+
+/* MARKETPLACE PAGE */
+
+.marketplace-container{
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
+}
+
+.marketplace-title{
+font-size:34px;
+margin-bottom:25px;
+}
+
+/* FILTER BAR */
+
+.filter-bar{
+display:flex;
+gap:15px;
+margin-bottom:30px;
+flex-wrap:wrap;
+}
+
+.filter-bar select,
+.filter-bar input{
+padding:10px 14px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:14px;
+}
+
+/* PROJECT GRID */
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+/* PROJECT CARD */
+
+.project-card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.project-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.project-title{
+font-size:20px;
+margin-bottom:15px;
+}
+
+.project-info{
+margin:6px 0;
+color:#555;
+font-size:14px;
+}
+
+.matching-score{
+margin-top:12px;
+font-weight:600;
+color:#2563eb;
+}
+
+.view-btn{
+margin-top:12px;
+padding:10px 16px;
+background:#2563eb;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+}
