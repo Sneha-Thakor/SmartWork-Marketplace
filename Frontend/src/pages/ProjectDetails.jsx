@@ -1,79 +1,73 @@
 import { useParams } from "react-router-dom"
+import projects from "../data/projects"
 
 function ProjectDetails(){
 
-const {id} = useParams()
+const { id } = useParams()
 
-/* Example Project Data */
+const project = projects.find(p => p.id === Number(id))
 
-const project = {
-title:"Mobile App Development",
-description:"We need a cross platform mobile application for ecommerce platform with payment integration and push notifications.",
-skills:["React Native","Firebase","Stripe"],
-budget:"$2000 - $4000",
-country:"USA",
-urgency:"High",
-duration:"30 Days",
-clientRating:"4.8",
-matchingScore:"86%",
-portfolio:"https://example-portfolio.com",
-website:"https://example-project.com",
-mobileApp:"Android + iOS"
+if(!project){
+return <h2>Project not found</h2>
 }
 
 return(
 
 <div className="project-details-container">
 
-<h1 className="project-title-big">{project.title}</h1>
+<div className="project-header">
+<h1>{project.title}</h1>
 
-<div className="project-info-box">
-
-<p className="project-meta"><b>Description:</b> {project.description}</p>
-
-<p className="project-meta"><b>Required Skills:</b> {project.skills.join(", ")}</p>
-
-<p className="project-meta"><b>Budget:</b> {project.budget}</p>
-
-<p className="project-meta"><b>Country:</b> {project.country}</p>
-
-<p className="project-meta"><b>Urgency:</b> {project.urgency}</p>
-
-<p className="project-meta"><b>Duration:</b> {project.duration}</p>
-
-<p className="project-meta"><b>Client Rating:</b> ⭐ {project.clientRating}</p>
-
-<p className="project-meta"><b>Matching Score:</b> {project.matchingScore}</p>
-
-{/* Mobile App Section */}
-
-<div className="project-section">
-
-<h3>Mobile App</h3>
-
-<p>{project.mobileApp}</p>
+<div className="project-meta">
+<span>Budget: {project.budget}</span>
+<span>Country: {project.country}</span>
+<span>Urgency: {project.urgency}</span>
+<span>Duration: {project.duration}</span>
+</div>
 
 </div>
 
-{/* Website Section */}
+<div className="project-grid">
 
-<div className="project-section">
+<div className="project-box">
+<strong>Description</strong>
+<p>{project.description}</p>
+</div>
 
-<h3>Website</h3>
+<div className="project-box">
+<strong>Client Rating</strong>
+<p>⭐ {project.rating}</p>
+</div>
 
-<a href={project.website} target="_blank">
+<div className="project-box">
+<strong>Matching Score</strong>
+<p>{Math.floor(Math.random()*20)+80}%</p>
+</div>
+
+<div className="project-box">
+<strong>Platform</strong>
+<p>{project.platform}</p>
+</div>
+
+</div>
+
+<div className="skill-tags">
+
+{project.skills.map((skill,index)=>(
+<span className="skill-tag" key={index}>
+{skill}
+</span>
+))}
+
+</div>
+
+<div className="project-links">
+
+<a href={project.website} target="_blank" rel="noopener noreferrer">
 Visit Website
 </a>
 
-</div>
-
-{/* Portfolio Section */}
-
-<div className="project-section">
-
-<h3>Portfolio</h3>
-
-<a href={project.portfolio} target="_blank">
+<a href={project.portfolio} target="_blank" rel="noopener noreferrer">
 View Portfolio
 </a>
 
@@ -85,10 +79,8 @@ Apply for Project
 
 </div>
 
-</div>
-
 )
 
 }
 
-export default ProjectDetails 
+export default ProjectDetails

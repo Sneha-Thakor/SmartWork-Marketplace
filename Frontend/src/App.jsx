@@ -9,7 +9,7 @@ import ProjectDetails from "./pages/ProjectDetails";
 import AdminDashboard from "./pages/AdminDashboard";
 
 /* NEW PAGES */
-import ApplyProject from "./pages/ApplyProject";
+import ApplyProject from "./pages/ApplyProject"
 import ApplicationStatus from "./pages/ApplicationStatus";
 import DeveloperRegister from "./pages/DeveloperRegister";
 import PostProject from "./pages/PostProject";
@@ -38,7 +38,7 @@ function App() {
         <Route path="/project/:id" element={<ProjectDetails />} />
 
         {/* APPLY PROJECT */}
-        <Route path="/apply/:id" element={<ApplyProject />} />
+        <Route path="/apply/:id" element={<ApplyProject/>} />
 
         {/* ADMIN DASHBOARD */}
         <Route path="/admin" element={<AdminDashboard />} />
