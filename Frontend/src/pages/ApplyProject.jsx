@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import projects from "../data/projects"
 
 function ApplyProject(){
 
 const { id } = useParams()
+const navigate = useNavigate()
 
 const project = projects.find(p => p.id === Number(id))
 
@@ -12,9 +13,32 @@ const [proposal,setProposal] = useState("")
 const [days,setDays] = useState("")
 const [portfolio,setPortfolio] = useState("")
 
+/* Project not found protection */
+
+if(!project){
+return(
+<div style={{padding:"60px"}}>
+<h2>Project Not Found</h2>
+</div>
+)
+}
+
 function handleSubmit(e){
+
 e.preventDefault()
+
 alert("Application Submitted Successfully 🚀")
+
+/* Clear form */
+
+setProposal("")
+setDays("")
+setPortfolio("")
+
+/* Redirect to marketplace */
+
+navigate("/marketplace")
+
 }
 
 return(
