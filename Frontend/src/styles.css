@@ -351,9 +351,17 @@ margin-top:35px;
 }
 
 .analytics-grid .card{
-height:320px;
+height:350px;
 display:flex;
 flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.analytics-grid canvas{
+max-width:280px;
+max-height:220px;
 }
 
 /* ================= SCROLLBAR ================= */
