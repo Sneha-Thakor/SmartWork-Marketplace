@@ -1,15 +1,16 @@
-import { useState } from "react";
-import developersData from "../data/developers";
+import { useState } from "react"
 
 function AdminUsers(){
 
-const [developers,setDevelopers] = useState(developersData)
+const [developers,setDevelopers] = useState(() => {
+return JSON.parse(localStorage.getItem("users")) || []
+})
 
 const [form,setForm] = useState({
 name:"",
-skill:"",
-experience:"",
-rating:""
+email:"",
+country:"",
+skill:""
 })
 
 const [editIndex,setEditIndex] = useState(null)
@@ -21,24 +22,28 @@ setForm({...form,[e.target.name]:e.target.value})
 function handleSubmit(e){
 e.preventDefault()
 
+let updatedDevelopers = [...developers]
+
 if(editIndex !== null){
 
-const updated = [...developers]
-updated[editIndex] = form
-setDevelopers(updated)
+updatedDevelopers[editIndex] = form
 setEditIndex(null)
 
 }else{
 
-setDevelopers([...developers,form])
+updatedDevelopers.push(form)
 
 }
 
+setDevelopers(updatedDevelopers)
+
+localStorage.setItem("users", JSON.stringify(updatedDevelopers))
+
 setForm({
 name:"",
-skill:"",
-experience:"",
-rating:""
+email:"",
+country:"",
+skill:""
 })
 
 }
@@ -49,8 +54,13 @@ setEditIndex(index)
 }
 
 function handleDelete(index){
+
 const updated = developers.filter((_,i)=>i!==index)
+
 setDevelopers(updated)
+
+localStorage.setItem("users", JSON.stringify(updated))
+
 }
 
 return(
@@ -61,7 +71,7 @@ return(
 
 <div className="admin-layout">
 
-{/* LEFT SIDE - FORM */}
+{/* LEFT FORM */}
 
 <div className="admin-form-card">
 
@@ -71,8 +81,22 @@ return(
 
 <input
 name="name"
-placeholder="Developer Name"
+placeholder="Full Name"
 value={form.name}
+onChange={handleChange}
+/>
+
+<input
+name="email"
+placeholder="Email"
+value={form.email}
+onChange={handleChange}
+/>
+
+<input
+name="country"
+placeholder="Country"
+value={form.country}
 onChange={handleChange}
 />
 
@@ -80,20 +104,6 @@ onChange={handleChange}
 name="skill"
 placeholder="Primary Skill"
 value={form.skill}
-onChange={handleChange}
-/>
-
-<input
-name="experience"
-placeholder="Experience (years)"
-value={form.experience}
-onChange={handleChange}
-/>
-
-<input
-name="rating"
-placeholder="Rating"
-value={form.rating}
 onChange={handleChange}
 />
 
@@ -106,7 +116,7 @@ onChange={handleChange}
 </div>
 
 
-{/* RIGHT SIDE - TABLE */}
+{/* RIGHT TABLE */}
 
 <div className="admin-table-card">
 
@@ -115,9 +125,9 @@ onChange={handleChange}
 <thead>
 <tr>
 <th>Name</th>
+<th>Email</th>
+<th>Country</th>
 <th>Skill</th>
-<th>Experience</th>
-<th>Rating</th>
 <th>Actions</th>
 </tr>
 </thead>
@@ -125,11 +135,13 @@ onChange={handleChange}
 <tbody>
 
 {developers.length === 0 ? (
+
 <tr>
 <td colSpan="5" style={{textAlign:"center"}}>
-No Developers Added
+No Developers Registered
 </td>
 </tr>
+
 ) : (
 
 developers.map((dev,i)=>(
@@ -138,11 +150,11 @@ developers.map((dev,i)=>(
 
 <td>{dev.name}</td>
 
+<td>{dev.email}</td>
+
+<td>{dev.country}</td>
+
 <td>{dev.skill}</td>
-
-<td>{dev.experience} yrs</td>
-
-<td>{dev.rating}</td>
 
 <td>
 

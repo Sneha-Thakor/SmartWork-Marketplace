@@ -1,125 +1,85 @@
-import { useState } from "react";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export default function PostProject() {
+function PostProject(){
 
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    skills: "",
-    category: "",
-    budgetMin: "",
-    budgetMax: "",
-    urgency: "",
-    duration: "",
-    country: "",
-    experience: ""
-  });
+const navigate = useNavigate()
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+const [title,setTitle] = useState("")
+const [skills,setSkills] = useState("")
+const [budget,setBudget] = useState("")
+const [country,setCountry] = useState("")
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Project Submitted:", formData);
+function handleSubmit(e){
 
-    // later connect API
-    // fetch("/api/projects", {method:"POST"})
-  };
+e.preventDefault()
 
-  return (
-    <div className="post-container">
-
-      <h2>Post a New Project</h2>
-
-      <form onSubmit={handleSubmit} className="project-form">
-
-        <label>Project Title</label>
-        <input
-          type="text"
-          name="title"
-          placeholder="AI Chatbot Development"
-          onChange={handleChange}
-        />
-
-        <label>Description</label>
-        <textarea
-          name="description"
-          placeholder="Describe your project requirements"
-          onChange={handleChange}
-        />
-
-        <label>Required Skills</label>
-        <input
-          type="text"
-          name="skills"
-          placeholder="React, Node.js, Python"
-          onChange={handleChange}
-        />
-
-        <label>Project Category</label>
-        <select name="category" onChange={handleChange}>
-          <option>Web Development</option>
-          <option>AI / ML</option>
-          <option>Mobile App</option>
-          <option>Data Science</option>
-        </select>
-
-        <label>Budget Range (USD)</label>
-        <div className="budget">
-          <input
-            type="number"
-            name="budgetMin"
-            placeholder="Min"
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            name="budgetMax"
-            placeholder="Max"
-            onChange={handleChange}
-          />
-        </div>
-
-        <label>Urgency Level</label>
-        <select name="urgency" onChange={handleChange}>
-          <option>Low</option>
-          <option>Medium</option>
-          <option>High</option>
-        </select>
-
-        <label>Expected Duration</label>
-        <input
-          type="text"
-          name="duration"
-          placeholder="2 weeks"
-          onChange={handleChange}
-        />
-
-        <label>Country / Time Zone</label>
-        <input
-          type="text"
-          name="country"
-          placeholder="USA / UK / India"
-          onChange={handleChange}
-        />
-
-        <label>Preferred Experience</label>
-        <input
-          type="number"
-          name="experience"
-          placeholder="3+ years"
-          onChange={handleChange}
-        />
-
-        <button type="submit" className="submit-btn">
-          Post Project
-        </button>
-
-      </form>
-    </div>
-  );
+const newProject = {
+id: Date.now(),
+title,
+skills,
+budget,
+country
 }
+
+const existing = JSON.parse(localStorage.getItem("projects")) || []
+
+existing.push(newProject)
+
+localStorage.setItem("projects", JSON.stringify(existing))
+
+alert("Project Posted Successfully 🚀")
+
+navigate("/admin/projects")
+
+}
+
+return(
+
+<div className="post-container">
+
+<h2>Post a New Project</h2>
+
+<form className="project-form" onSubmit={handleSubmit}>
+
+<input
+placeholder="Project Title"
+value={title}
+onChange={(e)=>setTitle(e.target.value)}
+required
+/>
+
+<input
+placeholder="Skills (React,Node)"
+value={skills}
+onChange={(e)=>setSkills(e.target.value)}
+required
+/>
+
+<input
+placeholder="Budget"
+value={budget}
+onChange={(e)=>setBudget(e.target.value)}
+required
+/>
+
+<input
+placeholder="Country"
+value={country}
+onChange={(e)=>setCountry(e.target.value)}
+required
+/>
+
+<button className="submit-btn">
+Post Project
+</button>
+
+</form>
+
+</div>
+
+)
+
+}
+
+export default PostProject

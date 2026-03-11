@@ -1,41 +1,82 @@
-import React from "react";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-function DeveloperRegister() {
+function DeveloperRegister(){
 
-  return (
+const navigate = useNavigate()
 
-    <div className="register-container">
+const [name,setName] = useState("")
+const [email,setEmail] = useState("")
+const [country,setCountry] = useState("")
+const [skill,setSkill] = useState("")
 
-      <h1>Join as Developer</h1>
-      <p>Create your developer profile and start applying to global projects.</p>
+function handleSubmit(e){
 
-      <form className="register-form">
+e.preventDefault()
 
-        <input type="text" placeholder="Full Name" required />
-
-        <input type="email" placeholder="Email Address" required />
-
-        <input type="password" placeholder="Password" required />
-
-        <input type="text" placeholder="Country / Location" />
-
-        <input type="text" placeholder="Primary Skill (React, Python etc)" />
-
-        <input type="text" placeholder="Secondary Skills" />
-
-        <input type="number" placeholder="Experience (Years)" />
-
-        <textarea placeholder="Short Bio"></textarea>
-
-        <input type="text" placeholder="Portfolio Link (Optional)" />
-
-        <button type="submit">Create Developer Profile</button>
-
-      </form>
-
-    </div>
-
-  );
+const newUser = {
+name,
+email,
+country,
+skill
 }
 
-export default DeveloperRegister;
+const users = JSON.parse(localStorage.getItem("users")) || []
+
+users.push(newUser)
+
+localStorage.setItem("users", JSON.stringify(users))
+
+alert("Developer Registered")
+
+navigate("/admin/users")
+
+}
+
+return(
+
+<div className="register-container">
+
+<h1>Join as Developer</h1>
+
+<form className="register-form" onSubmit={handleSubmit}>
+
+<input
+placeholder="Full Name"
+value={name}
+onChange={(e)=>setName(e.target.value)}
+required
+/>
+
+<input
+placeholder="Email"
+value={email}
+onChange={(e)=>setEmail(e.target.value)}
+required
+/>
+
+<input
+placeholder="Country"
+value={country}
+onChange={(e)=>setCountry(e.target.value)}
+required
+/>
+
+<input
+placeholder="Primary Skill"
+value={skill}
+onChange={(e)=>setSkill(e.target.value)}
+required
+/>
+
+<button>Register</button>
+
+</form>
+
+</div>
+
+)
+
+}
+
+export default DeveloperRegister

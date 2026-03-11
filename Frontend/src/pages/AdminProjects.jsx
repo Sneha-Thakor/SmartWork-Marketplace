@@ -1,9 +1,10 @@
-import { useState } from "react";
-import projectsData from "../data/projects";
+import { useState } from "react"
 
 function AdminProjects(){
 
-const [projects,setProjects] = useState(projectsData)
+const [projects,setProjects] = useState(() => {
+return JSON.parse(localStorage.getItem("projects")) || []
+})
 
 const [form,setForm] = useState({
 title:"",
@@ -21,18 +22,22 @@ setForm({...form,[e.target.name]:e.target.value})
 function handleSubmit(e){
 e.preventDefault()
 
+let updatedProjects = [...projects]
+
 if(editIndex !== null){
 
-const updated=[...projects]
-updated[editIndex]=form
-setProjects(updated)
+updatedProjects[editIndex] = form
 setEditIndex(null)
 
 }else{
 
-setProjects([...projects,form])
+updatedProjects.push(form)
 
 }
+
+setProjects(updatedProjects)
+
+localStorage.setItem("projects", JSON.stringify(updatedProjects))
 
 setForm({
 title:"",
@@ -49,8 +54,13 @@ setEditIndex(index)
 }
 
 function handleDelete(index){
-const updated=projects.filter((_,i)=>i!==index)
+
+const updated = projects.filter((_,i)=>i!==index)
+
 setProjects(updated)
+
+localStorage.setItem("projects", JSON.stringify(updated))
+
 }
 
 return(
@@ -65,9 +75,9 @@ return(
 
 <div className="admin-form-card">
 
-<h2>{editIndex!==null?"Edit Project":"Add Project"}</h2>
+<h2>{editIndex !== null ? "Edit Project" : "Add Project"}</h2>
 
-<form className="admin-form" onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit} className="admin-form">
 
 <input
 name="title"
@@ -97,8 +107,8 @@ value={form.country}
 onChange={handleChange}
 />
 
-<button type="submit">
-{editIndex!==null?"Update Project":"Add Project"}
+<button type="submit" className="primary-btn">
+{editIndex !== null ? "Update Project" : "Add Project"}
 </button>
 
 </form>
@@ -124,18 +134,29 @@ onChange={handleChange}
 
 <tbody>
 
-{projects.map((p,i)=>(
+{projects.length === 0 ? (
+
+<tr>
+<td colSpan="5" style={{textAlign:"center"}}>
+No Projects Added
+</td>
+</tr>
+
+) : (
+
+projects.map((proj,i)=>(
 
 <tr key={i}>
 
-<td>{p.title}</td>
-<td>{p.skills}</td>
-<td>{p.budget}</td>
-<td>{p.country}</td>
+<td>{proj.title}</td>
+
+<td>{proj.skills}</td>
+
+<td>{proj.budget}</td>
+
+<td>{proj.country}</td>
 
 <td>
-
-<div className="action-buttons">
 
 <button
 className="edit-btn"
@@ -151,12 +172,13 @@ onClick={()=>handleDelete(i)}
 Delete
 </button>
 
-</div>
-
 </td>
+
 </tr>
 
-))}
+))
+
+)}
 
 </tbody>
 
